@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateLargeCSV", "GenerateLargeCSV\GenerateLargeCSV.csproj", "{0B044428-34D8-4BB3-879C-34420B5FE8C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibLargeCSV", "LibLargeCSV\LibLargeCSV.csproj", "{CEFF56E7-D0B5-4BC2-AE89-8BBFC237F6ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessLargeCSV", "ProcessLargeCSV\ProcessLargeCSV.csproj", "{96434CF7-FB17-440A-A17F-5A10D15FE704}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0B044428-34D8-4BB3-879C-34420B5FE8C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B044428-34D8-4BB3-879C-34420B5FE8C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B044428-34D8-4BB3-879C-34420B5FE8C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B044428-34D8-4BB3-879C-34420B5FE8C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEFF56E7-D0B5-4BC2-AE89-8BBFC237F6ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEFF56E7-D0B5-4BC2-AE89-8BBFC237F6ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEFF56E7-D0B5-4BC2-AE89-8BBFC237F6ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEFF56E7-D0B5-4BC2-AE89-8BBFC237F6ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96434CF7-FB17-440A-A17F-5A10D15FE704}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96434CF7-FB17-440A-A17F-5A10D15FE704}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96434CF7-FB17-440A-A17F-5A10D15FE704}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96434CF7-FB17-440A-A17F-5A10D15FE704}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
