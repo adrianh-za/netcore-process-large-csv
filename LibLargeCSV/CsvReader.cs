@@ -32,7 +32,7 @@ public static class CsvReader
     /// <summary>
     /// Read lines from a file as a string and returns an enumerator.
     /// </summary>
-    private static async IAsyncEnumerable<string> ReadLines(string path)
+    public static async IAsyncEnumerable<string> ReadLines(string path)
     {
         using var reader = new StreamReader(path);
         while (!reader.EndOfStream)

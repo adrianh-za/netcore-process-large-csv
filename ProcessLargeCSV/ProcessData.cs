@@ -6,6 +6,7 @@ public static class ProcessData
 {
     /// <summary>
     /// Split the specified CSV file into chunks of the specified size.
+    /// This converts the line to type <see cref="Person"/> and writes to the chunked files.
     /// </summary>
     public static async Task<List<string>> ChunkFile(string inputPath, string outputPathFormat, int chunkSize)
     {
@@ -44,6 +45,45 @@ public static class ProcessData
     }
 
     /// <summary>
+    /// Split the specified CSV file into chunks of the specified size.
+    /// </summary>
+    public static async Task<List<string>> ChunkFileRaw(string inputPath, string outputPathFormat, int chunkSize)
+    {
+        var rowCounter = 0;
+        var chunkCounter = 1;
+
+        //Iterate each row in the large CSV and split into chunked files
+        var fileChunks = new List<string>();
+        CsvWriter? csvWriter = null;
+        try
+        {
+            await foreach (var line in CsvReader.ReadLines(inputPath))
+            {
+                if (rowCounter == 0)
+                {
+                    csvWriter?.Dispose();
+                    csvWriter = new CsvWriter(string.Format(outputPathFormat, chunkCounter));
+                    fileChunks.Add(string.Format(outputPathFormat, chunkCounter));
+                }
+
+                await csvWriter!.WriteLine(line);
+
+                if (++rowCounter == chunkSize)
+                {
+                    chunkCounter++;
+                    rowCounter = 0;
+                }
+            }
+        }
+        finally
+        {
+            csvWriter?.Dispose();
+        }
+
+        return fileChunks;
+    }
+
+    /// <summary>
     /// Takes a list of files and sorts the records in each file by ID.
     /// </summary>
     public static async Task SortFiles(IList<string> files)
@@ -60,7 +100,7 @@ public static class ProcessData
     /// </summary>
     public static async Task SortFilesParallel(IList<string> files, int parallelProcesses)
     {
-        if (parallelProcesses < 1 || parallelProcesses > 10)
+        if (parallelProcesses is < 1 or > 10)
             throw new ArgumentOutOfRangeException(nameof(parallelProcesses), "Parallel processes must be between 1 and 10");
 
         var parallelOptions = new ParallelOptions

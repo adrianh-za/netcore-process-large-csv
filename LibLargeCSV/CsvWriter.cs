@@ -25,8 +25,23 @@ public class CsvWriter: IDisposable
         if (_writer is null)
             Initialise();
 
-        //Write the record tp the file
+        //Write the record to the file
         await _writer!.WriteLineAsync(serializer(record));
+    }
+
+    /// <summary>
+    /// Write a line to the file.
+    /// </summary>
+    public async Task WriteLine(string line)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(line);
+
+        //Init stream and output file
+        if (_writer is null)
+            Initialise();
+
+        //Write the record to the file
+        await _writer!.WriteLineAsync(line);
     }
 
     /// <summary>
@@ -44,7 +59,7 @@ public class CsvWriter: IDisposable
             Directory.CreateDirectory(directory);
 
         //Create the file (will overwrite if it exists with blank file)
-        var fileStream = new FileStream(_path, FileMode.Create);
+        var fileStream = new FileStream(_path, FileMode.Create, FileAccess.Write, FileShare.None, 131072, FileOptions.Asynchronous);
         _writer = new StreamWriter(fileStream);
     }
 
